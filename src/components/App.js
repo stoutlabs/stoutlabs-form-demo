@@ -24,7 +24,7 @@ class App extends Component {
                   service_type: "",
                   firstName: "John",
                   lastName: "Doe",
-                  email: "",
+                  email: "default@nowhere.com",
                   favoriteColor: "",
                   activegroup: "",
                   appliance: "",
