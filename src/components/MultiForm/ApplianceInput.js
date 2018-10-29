@@ -32,7 +32,6 @@ const StyledTestInput = styled.div`
 const CustomInputComponent = ({ field, form: { touched, errors }, ...props }) => (
   <div>
     <select {...field} {...props}>
-      <option value={""}>Choose Brand</option>
       {applianceBrands.brands.map((brand, i) => {
         return (
           <option key={i} value={brand}>
