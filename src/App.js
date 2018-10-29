@@ -1,25 +1,47 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+
+import Wizard from "./components/Wizard";
+import PageOne from "./components/PageOne";
+import PageTwo from "./components/PageTwo";
+import StartPage from "./components/StartPage";
+
+import "./App.css";
+
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <main>
+          <div>
+            <h1>Multistep / Form Wizard </h1>
+            <Wizard
+              initialValues={{
+                service_dept: "",
+                firstName: "",
+                lastName: "",
+                email: "",
+                favoriteColor: "",
+                appliance: {
+                  refrigerator: "",
+                  oven: "",
+                  range: "",
+                  microwave: ""
+                }
+              }}
+              onSubmit={(values, actions) => {
+                sleep(300).then(() => {
+                  window.alert(JSON.stringify(values, null, 2));
+                  actions.setSubmitting(false);
+                });
+              }}
+            >
+              <PageOne />
+              <PageTwo />
+            </Wizard>
+          </div>
+        </main>
       </div>
     );
   }
